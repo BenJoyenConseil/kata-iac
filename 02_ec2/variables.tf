@@ -12,3 +12,8 @@ variable "sg_name" {
   description = "le nom du groupe de sécurité global"
   type = string
 }
+
+variable "apache_config_gitpath" {
+  description = "Le chemin qui pointe vers la conf apache de l'envrionnement"
+  type = string
+}

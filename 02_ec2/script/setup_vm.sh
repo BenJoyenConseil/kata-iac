@@ -11,7 +11,7 @@ sudo git checkout master
 
 # configure backend
 sudo yum install -y httpd apr apr-util-sqlite
-sudo mv apache/${env}/httpd.conf /etc/httpd/conf/httpd.conf
+sudo mv ${apache_conf} /etc/httpd/conf/httpd.conf
 
 sudo systemctl start httpd
 sudo systemctl enable httpd
