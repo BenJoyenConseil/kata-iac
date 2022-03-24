@@ -62,6 +62,10 @@ resource "aws_security_group" "web_access" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   tags = {
     Name = "${var.env}-duck-conf"
   }

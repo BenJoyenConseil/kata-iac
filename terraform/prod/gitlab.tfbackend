@@ -1,0 +1,5 @@
+address        = "https://gitlab.com/api/v4/projects/34796893/terraform/state/02_ec2_prod"
+lock_address   = "https://gitlab.com/api/v4/projects/34796893/terraform/state/02_ec2_prod/lock"
+unlock_address = "https://gitlab.com/api/v4/projects/34796893/terraform/state/02_ec2_prod/lock"
+username       = "bjoyenconseil"
+password       = ""
