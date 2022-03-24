@@ -51,3 +51,7 @@ resource "aws_security_group" "web_access" {
     Name = "${var.env}-duck-conf"
   }
 }
+
+output "dns" {
+  value = aws_instance.web.public_dns
+}
