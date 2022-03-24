@@ -7,3 +7,8 @@ variable "env" {
   description = "le nom de l'environnement"
   type = string
 }
+
+variable "sg_name" {
+  description = "le nom du groupe de sécurité global"
+  type = string
+}
