@@ -18,7 +18,7 @@ resource "aws_instance" "web" {
   key_name      = aws_key_pair.ssh_key.key_name
 
   vpc_security_group_ids = [data.aws_security_group.sg_io.id]
-  user_data              = templatefile("script/setup_vm.sh", {apache_conf: var.apache_config_gitpath})
+  user_data              = templatefile("script/setup_vm.sh", { apache_conf : var.apache_config_gitpath })
 
   tags = {
     Name = "${var.env}-duck-conf"
