@@ -14,26 +14,7 @@ resource "aws_instance" "web" {
   key_name      = aws_key_pair.ssh_key.key_name
 
   vpc_security_group_ids = [aws_security_group.web_access.id]
-  user_data              = <<EOF
-#! /bin/bash
-sudo yum update
-echo "SELINUX=permissive" | sudo tee /etc/selinux/config
-sudo setenforce 0
-
-# clone repo
-sudo yum install -y git
-git clone https://github.com/BenJoyenConseil/kata-iac.git
-cd kata-iac
-sudo git checkout master
-
-# configure backend
-sudo yum install -y httpd apr apr-util-sqlite
-sudo mv apache/${var.env}/httpd.conf /etc/httpd/conf/httpd.conf
-
-sudo systemctl start httpd
-sudo systemctl enable httpd
-
-EOF
+  user_data              = templatefile("script/setup_vm.sh", {env: var.env})
 
   tags = {
     Name = "${var.env}-duck-conf"
