@@ -9,6 +9,11 @@ dry-run: ## Simule un terraform apply et affiche l'état cible
 	terraform init -backend-config=${ENV}/gitlab.tfbackend -backend-config="password=${GITLAB_ACCESS_TOKEN}"
 	terraform plan -var-file=${ENV}/terraform.tfvars
 
+deploy-io: ## Déploie la stack d'entrées/sorties
+	cd 01_io/
+	rm -rf .terraform
+	terraform init -backend-config=gitlab.tfbackend -backend-config="password=${GITLAB_ACCESS_TOKEN}"
+	terraform apply
 
 help:
 	echo 'usage: make [COMMANDE] ...'
