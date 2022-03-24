@@ -3,8 +3,8 @@ SHELL=bash
 .SILENT:
 .DEFAULT_GOAL:=help
 
-dry-run: ## Simule un terraform apply et affiche l'état cible
-	cd terraform/
+dry-run-ec2: ## Simule un terraform apply et affiche l'état cible
+	cd 02_ec2/
 	rm -rf .terraform
 	terraform init -backend-config=${ENV}/gitlab.tfbackend -backend-config="password=${GITLAB_ACCESS_TOKEN}"
 	terraform plan -var-file=${ENV}/terraform.tfvars
@@ -16,13 +16,13 @@ deploy-io: ## Déploie la stack d'entrées/sorties
 	terraform apply
 
 deploy-ec2: ## Déploie la stack EC2
-	cd terraform/
+	cd 02_ec2/
 	rm -rf .terraform
 	terraform init -backend-config=${ENV}/gitlab.tfbackend -backend-config="password=${GITLAB_ACCESS_TOKEN}"
 	terraform apply -var-file="${ENV}/terraform.tfvars"
 
 status: ## Affiche l'état du siteweb et son code HTTP
-	cd terraform/
+	cd 02_ec2/
 	rm -rf .terraform
 	terraform init -backend-config=${ENV}/gitlab.tfbackend -backend-config="password=${GITLAB_ACCESS_TOKEN}"
 	url=$$(terraform output -raw dns)
