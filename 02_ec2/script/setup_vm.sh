@@ -7,7 +7,7 @@ sudo setenforce 0
 sudo yum install -y git
 git clone https://github.com/BenJoyenConseil/kata-iac.git
 cd kata-iac
-sudo git checkout etape11
+sudo git checkout etape12
 
 # configure backend
 sudo yum install -y httpd apr apr-util-sqlite
